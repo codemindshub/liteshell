@@ -10,7 +10,7 @@
 
 - **Simple and Lightweight:** Minimalist design for quick and efficient use.
 - **Basic Shell Features:** Supports common shell operations, commands, and syntax.
-- **Customization:** Easy to configure and extend to fit your specific needs.
+- **Customisation:** Easy to configure and extend to fit your specific needs.
 
 ## Getting Started
 
