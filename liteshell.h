@@ -90,6 +90,15 @@ lsh_t *lsh_init(void);
 void _free(void **ptr);
 #define safe_free(ptr) _free((void **)&(ptr))
 
+/* a function to create an alias node */
+alias_node *createAliasNode(const char *, const char *);
+
+/* a function to add an alias to linked list */
+void addAlias(alias_t *, const char *, const char *); 
+
+/* a function that counts the words in a string array */
+size_t str_arr_size(char **);
+
 /* implements basic error checking for NULL pointers */
 int check_err(void *ptr, char ptr_type);
 
