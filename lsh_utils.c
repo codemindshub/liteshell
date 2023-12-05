@@ -12,7 +12,7 @@ lsh_t *lsh_init(void)
 
 	/*
 	 * Let's handle memory allocation errors. This could happen if the system
-	 * is out of memory to alloccate for a new process, in which case our can't
+	 * is out of memory to allocate for a new process, in which case our can't
 	 * even start. We will graciously exit with -1
 	 */
 	if (check_err(lsh, 'm') == -1)
@@ -41,7 +41,7 @@ lsh_t *lsh_init(void)
  * @ptr_type: the type of data the pointer points
  *
  * Pointer Types: 'l' is used to check for uninitialized lists.
- * 'm' checks for memory alllocation failures, 'a' is for all other pointer
+ * 'm' checks for memory allocation failures, 'a' is for all other pointer
  * types that needs to checked for NULL
  *
  * Return: 0 if not NULL, -1 otherwise

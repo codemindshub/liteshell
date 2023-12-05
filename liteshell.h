@@ -4,12 +4,12 @@
 /*
  * CodeMinds `liteshell` team project
  *
- * Based on the feature you are implenting, add the function prototypes along
+ * Based on the feature you are implementing, add the function prototypes along
  * with any helper functions you use here. Strive on organizing them based on
  * the usage and purposes. If it already, don't touch it, use it as is. The
- * only time you are allowes to change anything here is when you have raised an
+ * only time you are allowed to change anything here is when you have raised an
  * issue or planning an update. Changing anything here could cause the other
- * parts of the project that depend on the exisiting function prototype to
+ * parts of the project that depend on the existing function prototype to
  * break. As a consenting adult, trust is placed in your hands to do what is
  * right for the best of us all.
  */
@@ -32,7 +32,7 @@ char *get_cmd_path(const char *command);
 
 /**
  * struct alias_node - a blueprint for alias nodes
- * @name: the name of the aliase
+ * @name: the name of the alias
  * @value: the command(s) being aliased
  * @next: pointer to the next alias node
  */
@@ -48,7 +48,7 @@ typedef struct alias_node
  * @size: size of the aliases list (basically, number of aliases)
  * @head: keeps track of the head node
  * @tail: keeps track of the tail node (helps in faster insertion at the end of
- * the list, achieving an O((1) in terms of time complexity))
+ * the list, achieving an O(1) in terms of time complexity)
  */
 typedef struct alias_t
 {
@@ -64,7 +64,7 @@ typedef struct alias_t
  * @exit_code: keeps track of the exit codes of each executed program (useful
  * when `echo $?` is received or when the `exit` command is received on the
  * command line without any argument)
- * @cmd_count: increment this value everytime you receive user input
+ * @cmd_count: increment this value every time you receive user input
  * @user_input: contains the string the user will enter (pass the address when
  * calling the `getline()` function)
  * @shell_name: store the value of `argv[0]` in this variable (this is how use
@@ -78,12 +78,12 @@ typedef struct lsh
 	int exit_code;
 	size_t cmd_count;
 	char *user_input;
+	char **commands;
 	const char *shell_name;
-	const char **commands;
 	alias_t *aliases;
 } lsh_t;
 
-/* initialiazes the shell structure */
+/* initializes the shell structure */
 lsh_t *lsh_init(void);
 
 /* safer way to deallocate memory */
