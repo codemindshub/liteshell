@@ -80,7 +80,9 @@ char *findAlias(alias_t *aliasList, const char *name)
   * Description: This function executes the alias command function call
   * sequence
   * @aliasList: pointer to linked list
-  * @arguments: array of strings (decays into char **)
+  * @arguments: tokenized array of strings from user input starting from the first
+  * index i.e after the command string
+  * alias command) 
   * Return: Nothing
   */
 
@@ -89,6 +91,9 @@ void aliasExecutor(alias_t *aliasList, char *arguments[])
 	int i = 0;
 	char **als, *name, *value;
 
+	/** char *arguments[] should be passed in as arguments[1:] in the main
+	 * shell file. This passes the array starting from the first index
+	 */
 	while (arguments[i])
 	{
 		als = tokenize(arguments[i], "=");
