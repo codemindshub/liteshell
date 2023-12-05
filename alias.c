@@ -4,8 +4,8 @@
   * createNode - Auxilliary Function
   * Description: This function creates an alias node and populates the members
   * with the key and value params
-  * @key: key to be assigned a value
-  * @value: value assigned to a key
+  * @name: name to be assigned a value
+  * @value: value assigned to a name
   * Return: (alias_node *) node on Success, NULL on Failure
   */
 
@@ -27,8 +27,8 @@ alias_node *createNode(const char *name, const char *value)
   * Description: This function creates a node and adds the newNode to the alias
   * linked list.
   * @aliasList: pointer to alias_t custom type (points to the list)
-  * @key: key to be assigned a value
-  * @value: value assigned to a key
+  * @name: name to be assigned a value
+  * @value: value assigned to a name
   * Return: Nothing
   */
 
@@ -54,10 +54,10 @@ void addAlias(alias_t *aliasList, const char *name, const char *value)
 
 /**
   * findAlias - Auxilliary Function
-  * Description: Finds a key that matches key param in the list, and returns the
-  * corresponding value.
+  * Description: Finds a name that matches name param in the list, and returns
+  * the corresponding value.
   * @aliasList: pointer to linked list
-  * @key: key entry to be matched
+  * @name: name entry to be matched
   * Return: (char *) current->value on Success, NULL on Failure
   */
 
@@ -74,6 +74,15 @@ char *findAlias(alias_t *aliasList, const char *name)
 	}
 	return (NULL);
 }
+
+/**
+  * aliasExecutor - Entry Point
+  * Description: This function executes the alias command function call
+  * sequence
+  * @aliasList: pointer to linked list
+  * @arguments: array of strings (decays into char **)
+  * Return: Nothing
+  */
 
 void aliasExecutor(alias_t *aliasList, char *arguments[])
 {
