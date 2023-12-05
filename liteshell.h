@@ -94,7 +94,10 @@ void _free(void **ptr);
 alias_node *createAliasNode(const char *, const char *);
 
 /* a function to add an alias to linked list */
-void addAlias(alias_t *, const char *, const char *); 
+void addAlias(alias_t *, const char *, const char *);
+
+/* a function to implement the alias command */
+void aliasExecutor(alias_t *, char *[]);
 
 /* a function that counts the words in a string array */
 size_t str_arr_size(char **);

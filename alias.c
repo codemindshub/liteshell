@@ -9,15 +9,15 @@
   * Return: (alias_node *) node on Success, NULL on Failure
   */
 
-alias_node *createNode(const char *key, const char *value)
+alias_node *createNode(const char *name, const char *value)
 {
 	alias_node *node;
 
-	node = (alias_t *) malloc(sizeof(alias_t));
+	node = (alias_node *) malloc(sizeof(alias_t));
 	if (node == NULL)
 		return (NULL);
-	node->key = key;
-	node->value = value;
+	node->name = (char *) name;
+	node->value = (char *) value;
 	node->next = NULL;
 	return (node);
 }
@@ -32,11 +32,11 @@ alias_node *createNode(const char *key, const char *value)
   * Return: Nothing
   */
 
-void addAlias(alias_t *aliasList, const char *key, const char *value)
+void addAlias(alias_t *aliasList, const char *name, const char *value)
 {
 	alias_node *newNode;
 
-	newNode = createNode(key, value);
+	newNode = createNode(name, value);
 	if (newNode == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error creating\n");
@@ -61,16 +61,51 @@ void addAlias(alias_t *aliasList, const char *key, const char *value)
   * Return: (char *) current->value on Success, NULL on Failure
   */
 
-char *findAlias(alias_t *aliasList, const char *key)
+char *findAlias(alias_t *aliasList, const char *name)
 {
 	alias_node *current;
 
 	current = aliasList->head;
 	while (current)
 	{
-		if (current->key == key)
+		if (current->name == name)
 			return (current->value);
 		current = current->next;
 	}
 	return (NULL);
+}
+
+void aliasExecutor(alias_t *aliasList, char *arguments[])
+{
+	int i = 0;
+	char **als, *name, *value;
+
+	while (arguments[i])
+	{
+		als = tokenize(arguments[i], "=");
+
+		if (str_arr_size(als) == 1)
+		{
+			name = als[0];
+			value = findAlias(aliasList, name);
+			if (value == NULL)
+			{
+				dprintf(STDERR_FILENO, "alias %s not found\n",
+						value);
+				exit(1);
+			}
+			printf("alias %s='%s'\n", name, value);
+		}
+		else if (str_arr_size(als) == 2)
+		{
+			name = als[0];
+			value = als[1];
+			addAlias(aliasList, name, value);
+		}
+		else
+		{
+			dprintf(STDERR_FILENO, "Unsupported alias format\n");
+			exit(EXIT_FAILURE);
+		}
+	}
 }
