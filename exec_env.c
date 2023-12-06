@@ -8,8 +8,8 @@
 /**
  * main - function to execute environment variables
  * @argc: number of arguments
- * @argv: vector of environment variables
- * @environ: environment variables
+ * @argv: Array of strings containing command-line arguments.
+ * @environ: Array of strings representing the environment variables.
  * Return: 0 on success
 */
 
