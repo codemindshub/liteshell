@@ -7,6 +7,10 @@
 
 /**
  * main - function to execute environment variables
+ * @argc: number of arguments
+ * @argv: vector of environment variables
+ * @environ: environment variables
+ * Return: 0 on success
 */
 
 int main(int argc, char **argv, char **environ) {
