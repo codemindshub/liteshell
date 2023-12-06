@@ -91,13 +91,19 @@ void _free(void **ptr);
 #define safe_free(ptr) _free((void **)&(ptr))
 
 /* a function to create an alias node */
-alias_node *createAliasNode(const char *, const char *);
+alias_node *initAlias(alias_t *aliasList, const char *, const char *);
 
 /* a function to add an alias to linked list */
-void addAlias(alias_t *, const char *, const char *);
+alias_node *addAlias(alias_t *, const char *, const char *);
+
+/* a function that returns the value member of an alias node*/
+char *findAlias(alias_t *, const char *);
+
+/* a function that prints all stored aliases in linked list */
+void printAliases(alias_t *);
 
 /* a function to implement the alias command */
-void aliasExecutor(alias_t *, char *[]);
+void aliasExecutor(alias_t *, char **);
 
 /* a function that counts the words in a string array */
 size_t str_arr_size(char **);
