@@ -91,22 +91,36 @@ void _free(void **ptr);
 #define safe_free(ptr) _free((void **)&(ptr))
 
 /* a function to create an alias node */
-alias_node *initAlias(alias_t *aliasList, const char *, const char *);
+alias_t *initAliasList(alias_t *aliasList);
 
 /* a function to add an alias to linked list */
-alias_node *addAlias(alias_t *, const char *, const char *);
+int addAlias(alias_t *aliasList, const char *name, const char *value);
 
 /* a function that returns the value member of an alias node*/
-char *findAlias(alias_t *, const char *);
+alias_node *findAlias(alias_t *aliasList, const char *name);
 
 /* a function that prints all stored aliases in linked list */
-void printAliases(alias_t *);
+int printAliasList(alias_t *aliasList);
 
-/* a function to implement the alias command */
-void aliasExecutor(alias_t *, char **);
+/* a function to an alias node */
+int printAlias(alias_node *alias, const char *name);
 
-/* a function that counts the words in a string array */
-size_t str_arr_size(char **);
+/* entry point function to handle single or multiple alias arguments */
+int handleAlias(alias_t *aliasList, char **arguments);
+
+/* a function that handles each alias argument */
+int handleAliasCommands(alias_t *aliasList, char *argument);
+/* a function to remove an alias node - unalias */
+int removeAlias(alias_t *aliasList, const char *name);
+
+/* a function to free an alias node */
+void freeAlias(alias_node *node);
+
+/* a function to free an alias list */
+void freeAliasList(alias_t *aliasList);
+
+/* a function to free tokens */
+void freeTokens(char **tokens);
 
 /* implements basic error checking for NULL pointers */
 int check_err(void *ptr, char ptr_type);
